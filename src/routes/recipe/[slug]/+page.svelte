@@ -17,7 +17,7 @@
     <div class="min-h-screen bg-white flex flex-col md:flex-row">
         <div class="md:w-1/3 bg-stone-100 p-6 flex flex-col border-r border-stone-200 overflow-y-auto">
             
-            <a href="/" class="text-stone-500 font-bold mb-4 inline-block text-lg hover:text-stone-800 transition">← Retour</a>
+            <a href="{base}" class="text-stone-500 font-bold mb-4 inline-block text-lg hover:text-stone-800 transition">← Retour</a>
 
             <h1 class="text-4xl font-extrabold text-stone-800 leading-tight mb-4">{recipe.title}</h1>
             
