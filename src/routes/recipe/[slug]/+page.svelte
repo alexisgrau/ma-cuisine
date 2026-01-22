@@ -1,6 +1,7 @@
 <script lang="ts">
     import { page } from '$app/stores';
     import { recipes } from '$lib/recipes';
+    import { base } from '$app/paths';
     
     $: recipeId = $page.params.slug;
     $: recipe = recipes.find(r => r.id === recipeId);
@@ -20,7 +21,7 @@
 
             <h1 class="text-4xl font-extrabold text-stone-800 leading-tight mb-4">{recipe.title}</h1>
             
-            <img src={recipe.image} alt={recipe.title} class="w-full h-48 object-cover rounded-xl shadow-md mb-6" on:error={displayPlaceholder}/>
+            <img src={base+recipe.image} alt={recipe.title} class="w-full h-48 object-cover rounded-xl shadow-md mb-6" on:error={displayPlaceholder}/>
             
             <div class="grid grid-cols-2 gap-3 mb-6">
                 <div class="bg-white p-3 rounded-lg shadow-sm text-center border border-stone-200">
@@ -42,7 +43,7 @@
             </div>
             
             
-            <div class="mt-auto"> <a href={`/recipe/${recipe.id}/cook`} class="block w-full bg-green-600 hover:bg-green-700 text-white text-center py-5 rounded-2xl text-2xl font-bold shadow-lg transform active:scale-95 transition">
+            <div class="mt-auto"> <a href={`${base}/recipe/${recipe.id}/cook`} class="block w-full bg-green-600 hover:bg-green-700 text-white text-center py-5 rounded-2xl text-2xl font-bold shadow-lg transform active:scale-95 transition">
                     Cuisiner
                 </a>
             </div>

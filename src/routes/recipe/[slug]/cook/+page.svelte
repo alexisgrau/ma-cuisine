@@ -3,7 +3,8 @@
     import { recipes } from '$lib/recipes';
     import { onMount, onDestroy } from 'svelte';
     import { requestWakeLock } from '$lib/wakelock';
-    import StepTimer from '$lib/components/StepTimer.svelte'; // Le minuteur qu'on a créé
+    import StepTimer from '$lib/components/StepTimer.svelte';
+    import { base } from '$app/paths';
 
     // Récupération recette
     $: recipeId = $page.params.slug;
@@ -51,7 +52,7 @@
             <div class="text-xl font-mono text-orange-400">
                 Étape {currentStep + 1} <span class="text-stone-500">/ {recipe.steps.length}</span>
             </div>
-            <a href={`/recipe/${recipe.id}`} class="text-sm bg-stone-700 px-3 py-1 rounded text-stone-300">Quitter</a>
+            <a href={`${base}/recipe/${recipe.id}`} class="text-sm bg-stone-700 px-3 py-1 rounded text-stone-300">Quitter</a>
         </div>
 
         <div class="flex-1 flex flex-col items-center justify-center p-8 text-center relative">

@@ -1,5 +1,6 @@
 <script lang="ts">
     import { recipes } from '$lib/recipes';
+    import { base } from '$app/paths';
 
     function displayPlaceholder(event: Event) {
         const img = event.target as HTMLImageElement;
@@ -18,9 +19,9 @@
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         {#each recipes as recipe}
-            <a href={`/recipe/${recipe.id}`} class="block bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-shadow border border-stone-200">
+            <a href={`${base}/recipe/${recipe.id}`} class="block bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-shadow border border-stone-200">
                 <div class="h-48 w-full bg-stone-200 relative">
-                    <img src={recipe.image} alt={recipe.title} class="w-full h-full object-cover" on:error={displayPlaceholder}/> 
+                    <img src={base+recipe.image} alt={recipe.title} class="w-full h-full object-cover" on:error={displayPlaceholder}/> 
                 </div>
                 <div class="p-5">
                     <h2 class="text-2xl font-bold text-stone-800 mb-2">{recipe.title}</h2>
