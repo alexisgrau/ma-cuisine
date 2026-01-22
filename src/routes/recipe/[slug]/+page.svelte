@@ -2,7 +2,6 @@
     import { page } from '$app/stores';
     import { recipes } from '$lib/recipes';
     import { base } from '$app/paths';
-    import { goto } from '$app/navigation';
    
     $: recipeId = $page.params.slug;
     $: recipe = recipes.find(r => r.id === recipeId);
@@ -58,7 +57,7 @@
             <!-- Ingredients section -->
             <h2 class="text-4xl font-bold text-stone-900 mb-6">Ingrédients</h2>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
                 {#each recipe.ingredients as ing}
                     <div class="flex items-start gap-3">
                         <span class="dot"></span>

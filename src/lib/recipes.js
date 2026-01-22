@@ -1,7 +1,7 @@
 export const recipes = [
     {
         id: "pancakes-moelleux",
-        title: "Pancakes Moelleux",
+        title: "Pancakes",
         image: "/images/pancakes.jpg",
         description: "Le petit-déjeuner américain par excellence.",
         prepTime: 10,
@@ -60,7 +60,7 @@ export const recipes = [
     },
     {
         id: "gateau-au-yaourt-facile",
-        title: "Gâteau au Yaourt Facile",
+        title: "Gâteau au Yaourt",
         image: "/images/gateau-yaourt.jpg",
         description: "Un grand classique simple, rapide et moelleux, idéal pour le goûter.",
         prepTime: 10,
@@ -95,7 +95,7 @@ export const recipes = [
     },
     {
         id: "baguette-tradition-francaise",
-        title: "Baguette Tradition Française",
+        title: "Baguette de pain",
         image: "/images/baguette-tradition.jpg",
         description: "La fameuse baguette de tradition française, croustillante à l'extérieur et moelleuse à l'intérieur.",
         prepTime: 30,
@@ -125,7 +125,7 @@ export const recipes = [
     },
     {
         id: "veritable-moelleux-au-chocolat",
-        title: "Véritable Moelleux au Chocolat",
+        title: "Moelleux au Chocolat",
         image: "/images/moelleux-chocolat.jpg",
         description: "Un gâteau au chocolat fondant et moelleux, parfait pour les amateurs de desserts chocolatés.",
         prepTime: 10,
@@ -160,7 +160,7 @@ export const recipes = [
     },
     {
         id: "galette-des-rois-frangipane",
-        title: "Galette des Rois à la Frangipane",
+        title: "Galette Frangipane",
         image: "/images/galette-des-rois-frangipane.jpg",
         description: "La traditionnelle galette des rois à la frangipane, croustillante et fondante, incontournable du mois de janvier.",
         prepTime: 20,
@@ -175,12 +175,11 @@ export const recipes = [
             { name: "Pâte feuilletée", quantity: "2 rouleaux" },
             { name: "Poudre d’amandes", quantity: "125 g" },
             { name: "Sucre", quantity: "100 g" },
-            { name: "Beurre", quantity: "100 g (mou)" },
+            { name: "Beurre", quantity: "100 g" },
             { name: "Oeufs", quantity: "2" },
             { name: "Jaune d’oeuf", quantity: "1 (pour la dorure)" },
             { name: "Extrait de vanille", quantity: "1 cuillère à café" },
-            { name: "Rhum (optionnel)", quantity: "1 cuillère à soupe" },
-            { name: "Fève", quantity: "1" }
+            { name: "Rhum (optionnel)", quantity: "1 cuillère à soupe" }
         ],
         steps: [
             "Préchauffer le four à 180°C (thermostat 6).",
@@ -200,7 +199,7 @@ export const recipes = [
     },
     {
         id: "pate-pizza-epaisse-moelleuse",
-        title: "Pâte à Pizza Épaisse et Moelleuse",
+        title: "Pâte à Pizza",
         image: "/images/pate-pizza-epaisse-moelleuse.jpg",
         description: "Une pâte à pizza maison épaisse et moelleuse, parfaite pour garnir selon vos envies.",
         prepTime: 20,
@@ -208,8 +207,7 @@ export const recipes = [
         difficulty: "Facile",
         budget: "Bas",
         categories: [
-            "Pâtes",
-            "Accompagnements"
+            "Plat principal",
         ],
         ingredients: [
             { "name": "Farine (type pâte à pain)", "quantity": "350 g" },
@@ -231,7 +229,7 @@ export const recipes = [
     },
     {
         id: "cookies-maison",
-        title: "Cookies Maison",
+        title: "Cookies",
         image: "/images/cookies-maison.jpg",
         description: "De délicieux cookies maison aux pépites de chocolat, simples et rapides à préparer.",
         prepTime: 15,
@@ -240,8 +238,7 @@ export const recipes = [
         budget: "Bas",
         categories: [
             "Desserts",
-            "Pâtisserie",
-            "Goûter"
+            "Pâtisserie"
         ],
         ingredients: [
             { "name": "Beurre tendre", "quantity": "85 g" },

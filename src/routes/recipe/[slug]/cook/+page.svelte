@@ -4,14 +4,11 @@
     import StepTimer from '$lib/components/StepTimer.svelte';
     import { base } from '$app/paths';
 
-    // Récupération recette
     $: recipeId = $page.params.slug;
     $: recipe = recipes.find(r => r.id === recipeId);
 
-    // État local
     let currentStep = 0;
 
-    // Navigation
     function next() {
         if (currentStep < (recipe?.steps.length || 0)) currentStep++;
     }
@@ -22,7 +19,7 @@
 </script>
 
 {#if recipe}
-    <video src="data:video/mp4;base64,AAAAHGZ0eXBpc29tAAACAGlzb21pc28ybXA0MQAAAAhmcmVlAAAAAG1kYXQAAAAhaW9uY2UAAABhdmNjAAAAAABhdmNj" loop muted></video>
+    <video src="data:video/mp4;base64,AAAAHGZ0eXBpc29tAAACAGlzb21pc28ybXA0MQAAAAhmcmVlAAAAAG1kYXQAAAAhaW9uY2UAAABhdmNjAAAAAABhdmNj" loop muted autoplay playsinline></video>
     <div class="h-screen w-screen flex flex-col bg-stone-900 text-stone-100 overflow-hidden">
         
         <div class="h-16 flex items-center justify-between px-6 bg-stone-800 border-b border-stone-700">
@@ -80,6 +77,9 @@
         to { opacity: 1; transform: translateY(0); }
     }
     video{
-        height: 0;
+        position: fixed;
+        width: 1px;
+        height: 1px;
+        opacity: 0;
     }
 </style>

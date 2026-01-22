@@ -9,7 +9,7 @@
     }
 </script>
 
-<a href={`${base}/recipe/${recipe.id}`} class="block bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-shadow border border-stone-200">
+<a href={`${base}/recipe/${recipe.id}`} class="block bg-white rounded-2xl shadow-md overflow-hidden border border-stone-200">
     <div class="h-48 w-full bg-stone-200 relative">
         <img src={base+recipe.image} alt={recipe.title} class="w-full h-full object-cover" onerror={displayPlaceholder}/> 
     </div>

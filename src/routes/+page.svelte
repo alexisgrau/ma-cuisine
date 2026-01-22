@@ -8,10 +8,6 @@
 
     let selectedCategory = $state<string>("Tous");
 
-    function categoryClick(category: string) {
-        selectedCategory = category;
-    }
-
     const filteredRecipes = $derived(selectedCategory === "Tous" ? recipes : recipes.filter(recipe => recipe.categories.includes(selectedCategory)));
 
 </script>
@@ -21,7 +17,7 @@
         {#each categories as category}
             <CategoryButton 
                 {category} 
-                onclick={() => categoryClick(category)} 
+                onclick={() => { selectedCategory = category; }} 
                 selected={selectedCategory === category}
             />
         {/each}
