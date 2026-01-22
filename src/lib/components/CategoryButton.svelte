@@ -16,6 +16,7 @@
         padding: 0.5rem 1rem;
         transition: background-color 0.2s ease;
         border-radius: 100px;
+        font-size: 20px;
     }
 
     .category-button.selected {

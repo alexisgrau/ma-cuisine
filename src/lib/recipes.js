@@ -114,13 +114,13 @@ export const recipes = [
         ],
         steps: [
             "Dans le bol de votre robot ou un grand saladier, mélangez la farine et l'eau à vitesse lente pour humidifier la farine (frasage).",
-            "Ajoutez le sel puis incorporez la levure émiettée (si vous utilisez de la levure sèche, délayez-la d'abord dans un peu d’eau tiède). Pétrissez environ 5 minutes jusqu’à obtenir une pâte homogène. :contentReference[oaicite:1]{index=1}",
-            "Couvrez la pâte d’un torchon humide et laissez-la lever 20 minutes à température ambiante. :contentReference[oaicite:2]{index=2}",
-            "Sur un plan de travail fariné, étalez la pâte sans la déchirer, rabattez les bords au centre, remettez-la dans le bol et laissez lever encore 20 minutes. Répétez cette étape une troisième fois puis laissez lever 2h pour que la pâte double de volume. :contentReference[oaicite:3]{index=3}",
-            "Partagez la pâte en 6 pâtons égaux, formez des boules, puis laissez-les reposer 10 minutes sous un torchon. :contentReference[oaicite:4]{index=4}",
-            "Façonnez chaque pâton en baguette allongée et laissez reposer 30 minutes pour l’apprêt. :contentReference[oaicite:5]{index=5}",
-            "Préchauffez le four à 250 °C avec un petit récipient rempli d’eau pour créer de la vapeur. :contentReference[oaicite:6]{index=6}",
-            "Entaillez chaque baguette avec une lame (2 à 3 incisions) puis enfournez environ 15 minutes jusqu’à ce que la croûte soit bien dorée. :contentReference[oaicite:7]{index=7}"
+            "Ajoutez le sel puis incorporez la levure émiettée (si vous utilisez de la levure sèche, délayez-la d'abord dans un peu d’eau tiède). Pétrissez environ 5 minutes jusqu’à obtenir une pâte homogène.",
+            "Couvrez la pâte d’un torchon humide et laissez-la lever 20 minutes à température ambiante.",
+            "Sur un plan de travail fariné, étalez la pâte sans la déchirer, rabattez les bords au centre, remettez-la dans le bol et laissez lever encore 20 minutes. Répétez cette étape une troisième fois puis laissez lever 2h pour que la pâte double de volume.",
+            "Partagez la pâte en 6 pâtons égaux, formez des boules, puis laissez-les reposer 10 minutes sous un torchon.",
+            "Façonnez chaque pâton en baguette allongée et laissez reposer 30 minutes pour l’apprêt.",
+            "Préchauffez le four à 250 °C avec un petit récipient rempli d’eau pour créer de la vapeur.",
+            "Entaillez chaque baguette avec une lame (2 à 3 incisions) puis enfournez environ 15 minutes jusqu’à ce que la croûte soit bien dorée."
         ]
     },
     {
@@ -157,6 +157,110 @@ export const recipes = [
             "Laisser tiédir avant de démouler.",
             "Optionnel : décorer avec du sucre glace ou du chocolat fondu."
         ]
+    },
+    {
+        id: "galette-des-rois-frangipane",
+        title: "Galette des Rois à la Frangipane",
+        image: "/images/galette-des-rois-frangipane.jpg",
+        description: "La traditionnelle galette des rois à la frangipane, croustillante et fondante, incontournable du mois de janvier.",
+        prepTime: 20,
+        cookTime: 30,
+        difficulty: "Moyenne",
+        budget: "Moyen",
+        categories: [
+            "Desserts",
+            "Boulangerie"
+        ],
+        ingredients: [
+            { name: "Pâte feuilletée", quantity: "2 rouleaux" },
+            { name: "Poudre d’amandes", quantity: "125 g" },
+            { name: "Sucre", quantity: "100 g" },
+            { name: "Beurre", quantity: "100 g (mou)" },
+            { name: "Oeufs", quantity: "2" },
+            { name: "Jaune d’oeuf", quantity: "1 (pour la dorure)" },
+            { name: "Extrait de vanille", quantity: "1 cuillère à café" },
+            { name: "Rhum (optionnel)", quantity: "1 cuillère à soupe" },
+            { name: "Fève", quantity: "1" }
+        ],
+        steps: [
+            "Préchauffer le four à 180°C (thermostat 6).",
+            "Dans un saladier, mélanger le beurre mou avec le sucre jusqu'à obtenir une texture crémeuse.",
+            "Ajouter les oeufs un à un en mélangeant bien.",
+            "Incorporer la poudre d’amandes, la vanille et le rhum si utilisé.",
+            "Dérouler une pâte feuilletée sur une plaque recouverte de papier cuisson.",
+            "Étaler la frangipane au centre en laissant environ 2 cm de bord.",
+            "Placer la fève dans la crème.",
+            "Humidifier légèrement les bords avec de l’eau.",
+            "Recouvrir avec la seconde pâte feuilletée et souder les bords.",
+            "Badigeonner le dessus avec le jaune d’oeuf.",
+            "Dessiner des motifs sur la galette avec la pointe d’un couteau sans percer la pâte.",
+            "Enfourner pendant environ 30 minutes jusqu'à ce que la galette soit bien dorée.",
+            "Laisser tiédir avant de servir."
+        ]
+    },
+    {
+        id: "pate-pizza-epaisse-moelleuse",
+        title: "Pâte à Pizza Épaisse et Moelleuse",
+        image: "/images/pate-pizza-epaisse-moelleuse.jpg",
+        description: "Une pâte à pizza maison épaisse et moelleuse, parfaite pour garnir selon vos envies.",
+        prepTime: 20,
+        cookTime: 0,
+        difficulty: "Facile",
+        budget: "Bas",
+        categories: [
+            "Pâtes",
+            "Accompagnements"
+        ],
+        ingredients: [
+            { "name": "Farine (type pâte à pain)", "quantity": "350 g" },
+            { "name": "Farine pour travailler la pâte", "quantity": "100 g" },
+            { "name": "Sel", "quantity": "2 cuillères à café" },
+            { "name": "Levure boulangère", "quantity": "1 sachet" },
+            { "name": "Huile d'olive", "quantity": "3 cuillères à soupe" },
+            { "name": "Eau tiède", "quantity": "25 cl" }
+        ],
+        steps: [
+            "Dans un grand saladier, mettre la farine (350 g), le sel, la levure boulangère et l'huile d'olive.",
+            "Verser petit à petit l'eau tiède tout en mélangeant avec une cuillère en bois jusqu’à obtenir une pâte homogène qui se détache du saladier.",
+            "Couvrir le saladier avec un torchon et laisser reposer la pâte pendant environ 1 heure dans un endroit chaud.",
+            "Sur un plan de travail fariné (utiliser la farine restante), déposer et travailler la pâte comme pour une pâte à pain.",
+            "Façonner la pâte aux dimensions de la plaque de cuisson (idéalement sur papier cuisson).",
+            "Garnir la pâte selon vos envies (sauce tomate, fromage, ingrédients…).",
+            "Cuire ensuite la pizza garnie au four selon la recette que vous utilisez pour votre garniture."
+        ]
+    },
+    {
+        id: "cookies-maison",
+        title: "Cookies Maison",
+        image: "/images/cookies-maison.jpg",
+        description: "De délicieux cookies maison aux pépites de chocolat, simples et rapides à préparer.",
+        prepTime: 15,
+        cookTime: 10,
+        difficulty: "Facile",
+        budget: "Bas",
+        categories: [
+            "Desserts",
+            "Pâtisserie",
+            "Goûter"
+        ],
+        ingredients: [
+            { "name": "Beurre tendre", "quantity": "85 g" },
+            { "name": "Sucre", "quantity": "85 g" },
+            { "name": "Sucre vanillé", "quantity": "1 sachet" },
+            { "name": "Farine", "quantity": "150 g" },
+            { "name": "Chocolat noir (pépites ou haché)", "quantity": "100 g" },
+            { "name": "Sel", "quantity": "1 pincée" },
+            { "name": "Levure chimique", "quantity": "1 cuillère à café" },
+            { "name": "Oeuf", "quantity": "1" }
+        ],
+        steps: [
+            "Préchauffer le four à 180 °C (thermostat 6).",
+            "Détailler le chocolat en pépites si nécessaire.",
+            "Dans un saladier, mélanger le beurre tendre, le sucre, le sucre vanillé et l'oeuf avec une cuillère en bois.",
+            "Ajouter progressivement la farine, la levure chimique, le sel et le chocolat, puis mélanger jusqu'à obtenir une pâte homogène.",
+            "Sur une plaque recouverte de papier cuisson, former des petits tas de pâte avec deux cuillères à soupe en les espaçant bien.",
+            "Enfourner pendant environ 10 minutes jusqu’à ce que les bords commencent à dorer.",
+            "Laisser tiédir les cookies quelques minutes avant de les transférer sur une grille pour refroidir complètement."
+        ]
     }
-
 ];

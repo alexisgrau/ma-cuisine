@@ -1,8 +1,6 @@
 <script lang="ts">
     import { page } from '$app/stores';
     import { recipes } from '$lib/recipes';
-    import { onMount, onDestroy } from 'svelte';
-    import { requestWakeLock } from '$lib/wakelock';
     import StepTimer from '$lib/components/StepTimer.svelte';
     import { base } from '$app/paths';
 
@@ -12,27 +10,6 @@
 
     // État local
     let currentStep = 0;
-    let wakeLock:WakeLockSentinel|null = null;
-
-    // Gestion du Wake Lock (Garder écran allumé)
-    onMount(async () => {
-        wakeLock = await requestWakeLock();
-        // Si on quitte l'app et qu'on revient, il faut redemander le lock
-        document.addEventListener('visibilitychange', handleVisibilityChange);
-    });
-
-    const handleVisibilityChange = async () => {
-        if (wakeLock !== null && document.visibilityState === 'visible') {
-            wakeLock = await requestWakeLock();
-        }
-    };
-
-    onDestroy(() => {
-        if (wakeLock) wakeLock.release();
-        if (typeof document !== 'undefined') {
-            document.removeEventListener('visibilitychange', handleVisibilityChange);
-        }
-    });
 
     // Navigation
     function next() {
@@ -45,6 +22,7 @@
 </script>
 
 {#if recipe}
+    <video src="data:video/mp4;base64,AAAAHGZ0eXBpc29tAAACAGlzb21pc28ybXA0MQAAAAhmcmVlAAAAAG1kYXQAAAAhaW9uY2UAAABhdmNjAAAAAABhdmNj" loop muted></video>
     <div class="h-screen w-screen flex flex-col bg-stone-900 text-stone-100 overflow-hidden">
         
         <div class="h-16 flex items-center justify-between px-6 bg-stone-800 border-b border-stone-700">
@@ -100,5 +78,8 @@
     @keyframes fadeIn {
         from { opacity: 0; transform: translateY(10px); }
         to { opacity: 1; transform: translateY(0); }
+    }
+    video{
+        height: 0;
     }
 </style>
