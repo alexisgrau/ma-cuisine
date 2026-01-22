@@ -17,7 +17,7 @@
     <div class="min-h-screen bg-white flex flex-col md:flex-row">
         <div class="md:w-1/3 bg-stone-100 p-6 flex flex-col border-r border-stone-200 overflow-y-auto">
             
-            <a href="{base}" class="text-stone-500 font-bold mb-4 inline-block text-lg hover:text-stone-800 transition">← Retour</a>
+            <a href="{base}/" class="text-stone-500 font-bold mb-4 inline-block text-lg hover:text-stone-800 transition">← Retour</a>
 
             <h1 class="text-4xl font-extrabold text-stone-800 leading-tight mb-4">{recipe.title}</h1>
             
@@ -26,11 +26,11 @@
             <div class="grid grid-cols-2 gap-3 mb-6">
                 <div class="bg-white p-3 rounded-lg shadow-sm text-center border border-stone-200">
                     <div class="text-xs text-stone-500 uppercase font-bold">Prépa</div>
-                    <div class="font-bold text-stone-800">{recipe.prepTime}</div>
+                    <div class="font-bold text-stone-800">{recipe.prepTime} min</div>
                 </div>
                 <div class="bg-white p-3 rounded-lg shadow-sm text-center border border-stone-200">
                     <div class="text-xs text-stone-500 uppercase font-bold">Cuisson</div>
-                    <div class="font-bold text-stone-800">{recipe.cookTime}</div>
+                    <div class="font-bold text-stone-800">{recipe.cookTime} min</div>
                 </div>
                 <div class="bg-white p-3 rounded-lg shadow-sm text-center border border-stone-200">
                     <div class="text-xs text-stone-500 uppercase font-bold">Niveau</div>

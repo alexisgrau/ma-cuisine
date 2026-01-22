@@ -69,7 +69,7 @@
                 <div class="text-center">
                     <div class="text-6xl mb-4">🎉</div>
                     <h2 class="text-5xl font-bold text-green-400 mb-6">Bon Appétit !</h2>
-                    <a href="/" class="inline-block bg-white text-stone-900 text-2xl font-bold py-4 px-10 rounded-full shadow-lg hover:bg-stone-200">
+                    <a href={`${base}/`} class="inline-block bg-white text-stone-900 text-2xl font-bold py-4 px-10 rounded-full shadow-lg hover:bg-stone-200">
                         Choisir une autre recette
                     </a>
                 </div>
