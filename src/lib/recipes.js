@@ -261,5 +261,33 @@ export const recipes = [
             "Enfourner pendant environ 10 minutes jusqu’à ce que les bords commencent à dorer.",
             "Laisser tiédir les cookies quelques minutes avant de les transférer sur une grille pour refroidir complètement."
         ]
+    },
+    {
+        "id": "pate-a-crepes",
+        "title": "Pâte à crêpes",
+        "image": "/images/pate-a-crepes.jpg",
+        "description": "Une pâte à crêpes classique, légère et parfumée au rhum, idéale pour des crêpes fines et dorées.",
+        "prepTime": 10,
+        "cookTime": 0,
+        "difficulty": "Facile",
+        "budget": "Bas",
+        "categories": [
+            "Desserts"
+        ],
+        "ingredients": [
+            { "name": "Farine", "quantity": "300 g" },
+            { "name": "Sucre", "quantity": "3 cuillères à soupe" },
+            { "name": "Huile", "quantity": "2 cuillères à soupe" },
+            { "name": "Beurre fondu", "quantity": "50 g" },
+            { "name": "Rhum", "quantity": "5 cl" },
+            { "name": "Oeufs entiers", "quantity": "3" },
+            { "name": "Lait", "quantity": "60 cl" }
+        ],
+        "steps": [
+            "Mettre la farine dans une terrine et former un puits.",
+            "Y déposer les oeufs entiers, le sucre, l'huile et le beurre fondu.",
+            "Mélanger délicatement avec un fouet en ajoutant au fur et à mesure le lait jusqu'à obtenir une pâte légèrement épaisse.",
+            "Parfumer la pâte avec le rhum."
+        ]
     }
 ];
