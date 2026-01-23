@@ -11,7 +11,6 @@ export const recipes = [
         categories: [
             "Desserts"
         ],
-        // --------------------------
         ingredients: [
             { name: "Farine", quantity: "250g" },
             { name: "Oeufs", quantity: "2" },
@@ -34,7 +33,6 @@ export const recipes = [
         title: "Pâtes Carbonara",
         image: "/images/carbonara.jpg",
         description: "La vraie recette italienne, sans crème !",
-        // --- Nouveaux attributs ---
         prepTime: 15,
         cookTime: 10,
         difficulty: "Moyen",
@@ -42,7 +40,6 @@ export const recipes = [
         categories: [
             "Plat principal"
         ],
-        // --------------------------
         ingredients: [
             { name: "Spaghetti", quantity: "400g" },
             { name: "Guanciale (ou lardons)", quantity: "200g" },
@@ -70,7 +67,6 @@ export const recipes = [
         categories: [
             "Desserts"
         ],
-        // --------------------------
         ingredients: [
             { name: "Yaourt nature", quantity: "1 pot" },
             { name: "Sucre", quantity: "2 pots" },
@@ -137,7 +133,6 @@ export const recipes = [
         categories: [
             "Desserts"
         ],
-        // --------------------------
         ingredients: [
             { name: "Farine", quantity: "125g" },
             { name: "Beurre doux", quantity: "125g" },
@@ -164,7 +159,7 @@ export const recipes = [
         id: "galette-des-rois-frangipane",
         title: "Galette Frangipane",
         image: "/images/galette-des-rois-frangipane.jpg",
-        description: "La traditionnelle galette des rois à la frangipane, croustillante et fondante, incontournable du mois de janvier.",
+        description: "La traditionnelle galette des rois à la frangipane, croustillante et fondante.",
         prepTime: 20,
         cookTime: 30,
         difficulty: "Moyenne",
@@ -288,6 +283,39 @@ export const recipes = [
             "Y déposer les oeufs entiers, le sucre, l'huile et le beurre fondu.",
             "Mélanger délicatement avec un fouet en ajoutant au fur et à mesure le lait jusqu'à obtenir une pâte légèrement épaisse.",
             "Parfumer la pâte avec le rhum."
+        ]
+    },
+    {
+        "id": "madeleines",
+        "title": "Madeleines",
+        "image": "/images/madeleines.jpg",
+        "description": "Des madeleines moelleuses et parfumées à la fleur d'oranger, parfaites pour le goûter ou le dessert.",
+        "prepTime": 30,
+        "cookTime": 15,
+        "difficulty": "Facile",
+        "budget": "Bas",
+        "categories": [
+            "Desserts",
+            "Pâtisserie"
+        ],
+        "ingredients": [
+            { "name": "Sucre", "quantity": "150 g" },
+            { "name": "Farine", "quantity": "200 g" },
+            { "name": "Eau de fleur d'oranger", "quantity": "2 cuillères à soupe" },
+            { "name": "Levure chimique", "quantity": "8 g" },
+            { "name": "Beurre fondu", "quantity": "100 g" },
+            { "name": "Œufs", "quantity": "3" },
+            { "name": "Lait", "quantity": "50 g" }
+        ],
+        "steps": [
+            "Préchauffer le four à 240 °C et faire fondre le beurre à feu doux, puis réserver.",
+            "Dans un saladier, mélanger les œufs avec le sucre jusqu’à ce que le mélange blanchisse.",
+            "Ajouter la fleur d’oranger et 40 g de lait, puis mélanger.",
+            "Incorporer la farine et la levure chimique, puis ajouter le beurre fondu et le reste du lait.",
+            "Laisser reposer la préparation 15 minutes.",
+            "Beurrer les moules à madeleines et y verser la pâte sans remplir jusqu’en haut (les madeleines vont gonfler).",
+            "Enfourner à 240 °C et au bout de 5 minutes baisser la température à 200 °C, puis poursuivre la cuisson environ 10 minutes.",
+            "Démouler les madeleines dès leur sortie du four."
         ]
     }
 ];
