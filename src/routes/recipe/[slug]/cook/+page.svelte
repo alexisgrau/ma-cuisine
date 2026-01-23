@@ -11,11 +11,12 @@
     let currentStep = 0;
     let logs: string[] = [];
     let wakeLock: any = null;
-    let showLogs = true; // Mettre false pour cacher les logs une fois testé
+    let showLogs = true;
+    let wakeLockActivated = false;
 
     function addLog(message: string) {
         const time = new Date().toLocaleTimeString();
-        logs = [`[${time}] ${message}`, ...logs].slice(0, 5); // Garder les 5 derniers logs
+        logs = [`[${time}] ${message}`, ...logs].slice(0, 5);
         console.log(message);
     }
 
@@ -23,10 +24,12 @@
         try {
             if ('wakeLock' in navigator) {
                 wakeLock = await (navigator as any).wakeLock.request('screen');
+                wakeLockActivated = true;
                 addLog('✅ Wake Lock activé');
                 
                 wakeLock.addEventListener('release', () => {
                     addLog('⚠️ Wake Lock relâché');
+                    wakeLockActivated = false;
                 });
             } else {
                 addLog('❌ Wake Lock non supporté');
@@ -39,7 +42,7 @@
     async function handleVisibilityChange() {
         if (document.visibilityState === 'visible') {
             addLog('👁️ Page visible');
-            if (wakeLock === null) {
+            if (wakeLock === null && wakeLockActivated) {
                 await requestWakeLock();
             }
         } else {
@@ -47,23 +50,35 @@
         }
     }
 
+    // Activer Wake Lock sur TOUTE interaction
+    async function activateOnInteraction() {
+        if (!wakeLockActivated) {
+            await requestWakeLock();
+        }
+    }
+
     onMount(() => {
         addLog('🚀 App démarrée');
         
-        // Activer Wake Lock
-        requestWakeLock();
+        // Écouter TOUTES les interactions pour activer le Wake Lock
+        const events = ['click', 'touchstart', 'keydown'];
+        events.forEach(event => {
+            document.addEventListener(event, activateOnInteraction, { once: true });
+        });
         
-        // Réactiver si la page redevient visible
         document.addEventListener('visibilitychange', handleVisibilityChange);
         
         // Test toutes les minutes
         const interval = setInterval(() => {
-            addLog('💚 App toujours active');
+            addLog('💚 App active');
         }, 60000);
 
         return () => {
             clearInterval(interval);
             document.removeEventListener('visibilitychange', handleVisibilityChange);
+            events.forEach(event => {
+                document.removeEventListener(event, activateOnInteraction);
+            });
             if (wakeLock !== null) {
                 wakeLock.release();
                 addLog('🔓 Wake Lock libéré');
@@ -89,12 +104,17 @@
 {#if recipe}    
     <div class="h-screen w-screen flex flex-col bg-neutral-900 text-white relative">
         
-        <!-- Panneau de logs (pour debug) -->
+        <!-- Panneau de logs -->
         {#if showLogs}
-            <div class="absolute top-20 right-4 bg-black/80 text-green-400 text-xs font-mono p-3 rounded-lg max-w-xs z-50 backdrop-blur">
+            <div class="absolute top-20 right-4 bg-black/90 text-green-400 text-xs font-mono p-3 rounded-lg max-w-xs z-50 backdrop-blur border border-green-500/30">
                 <div class="flex justify-between items-center mb-2">
                     <span class="font-bold">DEBUG LOGS</span>
                     <button on:click={toggleLogs} class="text-red-400">✕</button>
+                </div>
+                <div class="mb-2 pb-2 border-b border-green-500/30">
+                    Wake Lock: <span class={wakeLockActivated ? 'text-green-400' : 'text-red-400'}>
+                        {wakeLockActivated ? '🟢 ACTIF' : '🔴 INACTIF'}
+                    </span>
                 </div>
                 {#each logs as log}
                     <div class="mb-1">{log}</div>
@@ -104,8 +124,15 @@
             <button 
                 on:click={toggleLogs} 
                 class="absolute top-20 right-4 bg-black/50 text-white text-xs px-3 py-1 rounded z-50">
-                Logs
+                Logs {wakeLockActivated ? '🟢' : '🔴'}
             </button>
+        {/if}
+
+        <!-- Message d'activation si pas encore actif -->
+        {#if !wakeLockActivated}
+            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-orange-500 text-white px-6 py-3 rounded-lg shadow-lg z-40 animate-pulse">
+                👆 Touchez l'écran pour activer le mode cuisine
+            </div>
         {/if}
 
         <div class="px-6 pt-6 pb-4">
