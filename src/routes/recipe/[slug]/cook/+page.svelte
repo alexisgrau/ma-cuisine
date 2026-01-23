@@ -3,39 +3,24 @@
     import { recipes } from '$lib/recipes';
     import StepTimer from '$lib/components/StepTimer.svelte';
     import { base } from '$app/paths';
-    // AJOUT 1 : Importer les outils de sauvegarde
-    import { navigationState } from '$lib/stores/navigationState';
-    import { onMount } from 'svelte';
 
     $: recipeId = $page.params.slug;
     $: recipe = recipes.find(r => r.id === recipeId);
 
     let currentStep = 0;
 
-    onMount(() => {
-        const saved = $navigationState;
-        if (saved && saved.path === $page.url.pathname && saved.data?.currentStep !== undefined) {
-            currentStep = saved.data.currentStep;
-        }
-    });
-
     function next() {
         if (currentStep < (recipe?.steps.length || 0)) {
             currentStep++;
-            saveCookingProgress();
         }
     }
 
     function prev() {
         if (currentStep > 0) {
             currentStep--;
-            saveCookingProgress();
         }
     }
 
-    function saveCookingProgress() {
-        navigationState.saveRoute($page.url.pathname, { currentStep, recipeId });
-    }
 </script>
 
 {#if recipe}    
