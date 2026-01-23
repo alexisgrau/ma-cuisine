@@ -11,43 +11,110 @@
     let currentStep = 0;
     let logs: string[] = [];
     let showLogs = true;
+    let dummyValue = 0;
 
     function addLog(message: string) {
         const time = new Date().toLocaleTimeString();
-        logs = [`[${time}] ${message}`, ...logs].slice(0, 8);
+        logs = [`[${time}] ${message}`, ...logs].slice(0, 10);
         console.log(message);
     }
 
     onMount(() => {
         addLog('🚀 App démarrée');
         
-        // Scroll automatique toutes les 3 minutes pour simuler une activité
-        const scrollInterval = setInterval(() => {
+        // TECHNIQUE 1: Scroll micro toutes les 30 secondes
+        const microScroll = setInterval(() => {
             window.scrollBy(0, 1);
-            setTimeout(() => window.scrollBy(0, -1), 100);
-            addLog('🔄 Keep-alive scroll');
-        }, 180000); // 3 minutes
+            setTimeout(() => window.scrollBy(0, -1), 50);
+            addLog('📜 Micro scroll');
+        }, 30000);
         
-        // Log toutes les minutes pour vérifier que l'app tourne
+        // TECHNIQUE 2: Touch event simulé toutes les 2 minutes
+        const touchSimulation = setInterval(() => {
+            const touch = new Touch({
+                identifier: Date.now(),
+                target: document.body,
+                clientX: 0,
+                clientY: 0,
+                screenX: 0,
+                screenY: 0,
+                pageX: 0,
+                pageY: 0,
+                radiusX: 2.5,
+                radiusY: 2.5,
+                rotationAngle: 0,
+                force: 0.5
+            });
+            
+            const touchEvent = new TouchEvent('touchstart', {
+                touches: [touch],
+                targetTouches: [touch],
+                changedTouches: [touch],
+                bubbles: true,
+                cancelable: true
+            });
+            
+            document.body.dispatchEvent(touchEvent);
+            addLog('👆 Touch simulé');
+        }, 120000);
+        
+        // TECHNIQUE 3: Modifier le DOM toutes les minutes
+        const domChange = setInterval(() => {
+            dummyValue = Date.now();
+            addLog('🔄 DOM update');
+        }, 60000);
+        
+        // TECHNIQUE 4: Cursor move simulé toutes les 90 secondes
+        const mouseMove = setInterval(() => {
+            const event = new MouseEvent('mousemove', {
+                bubbles: true,
+                cancelable: true,
+                clientX: Math.random() * 10,
+                clientY: Math.random() * 10
+            });
+            document.dispatchEvent(event);
+            addLog('🖱️ Mouse move');
+        }, 90000);
+        
+        // TECHNIQUE 5: Focus sur un élément invisible
+        const focusKeep = setInterval(() => {
+            const hiddenInput = document.getElementById('keep-alive-input');
+            if (hiddenInput) {
+                hiddenInput.focus();
+                addLog('🎯 Focus keep');
+            }
+        }, 45000);
+        
+        // Log d'activité
         const logInterval = setInterval(() => {
-            addLog('💚 App toujours active');
+            addLog('💚 App active');
         }, 60000);
 
-        // Détecter si la page est cachée
+        // Visibilité
         const handleVisibilityChange = () => {
-            if (document.visibilityState === 'visible') {
-                addLog('👁️ Page visible');
-            } else {
-                addLog('🌙 Page cachée');
-            }
+            addLog(document.visibilityState === 'visible' ? '👁️ Visible' : '🌙 Caché');
         };
         document.addEventListener('visibilitychange', handleVisibilityChange);
 
+        // Empêcher le sleep
+        const preventSleep = setInterval(() => {
+            document.body.style.transform = 'translateZ(0)';
+            setTimeout(() => {
+                document.body.style.transform = '';
+            }, 10);
+            addLog('🛡️ Anti-sleep');
+        }, 150000);
+
         return () => {
-            clearInterval(scrollInterval);
+            clearInterval(microScroll);
+            clearInterval(touchSimulation);
+            clearInterval(domChange);
+            clearInterval(mouseMove);
+            clearInterval(focusKeep);
             clearInterval(logInterval);
+            clearInterval(preventSleep);
             document.removeEventListener('visibilitychange', handleVisibilityChange);
-            addLog('🛑 App fermée');
+            addLog('🛑 Cleanup');
         };
     });
 
@@ -69,11 +136,23 @@
 {#if recipe}    
     <div class="h-screen w-screen flex flex-col bg-neutral-900 text-white relative overflow-auto">
         
+        <!-- Input invisible pour focus -->
+        <input 
+            id="keep-alive-input" 
+            type="text" 
+            style="position: absolute; opacity: 0; pointer-events: none; width: 1px; height: 1px;"
+            aria-hidden="true"
+            tabindex="-1"
+        />
+        
+        <!-- Dummy element pour forcer re-render -->
+        <div style="position: absolute; width: 0; height: 0; opacity: 0;" data-dummy={dummyValue}></div>
+        
         <!-- Panneau de logs -->
         {#if showLogs}
-            <div class="absolute top-20 right-4 bg-black/90 text-green-400 text-xs font-mono p-3 rounded-lg max-w-xs z-50 backdrop-blur border border-green-500/30">
-                <div class="flex justify-between items-center mb-2">
-                    <span class="font-bold">DEBUG LOGS</span>
+            <div class="absolute top-20 right-4 bg-black/95 text-green-400 text-xs font-mono p-3 rounded-lg max-w-xs z-50 backdrop-blur border border-green-500/30 max-h-80 overflow-y-auto">
+                <div class="flex justify-between items-center mb-2 sticky top-0 bg-black pb-1">
+                    <span class="font-bold">🔍 DEBUG</span>
                     <button on:click={toggleLogs} class="text-red-400 hover:text-red-300">✕</button>
                 </div>
                 <div class="space-y-1">
@@ -85,8 +164,8 @@
         {:else}
             <button 
                 on:click={toggleLogs} 
-                class="absolute top-20 right-4 bg-black/50 text-white text-xs px-3 py-1 rounded z-50 hover:bg-black/70">
-                📊 Logs
+                class="absolute top-20 right-4 bg-green-600/80 text-white text-xs px-3 py-2 rounded z-50 hover:bg-green-600 font-bold shadow-lg">
+                📊 LOGS
             </button>
         {/if}
 
@@ -144,10 +223,9 @@
             </div>
         {/if}
 
-        <!-- Zone invisible pour permettre le scroll -->
-
+        <!-- Zone pour scroll -->
     </div>
-    <div style="height: 1px; width: 20px;"></div>
+    <div style="height: 50px; width: 100%;"></div>
 {/if}
 
 <style>
