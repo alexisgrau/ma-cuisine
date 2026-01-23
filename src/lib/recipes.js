@@ -114,9 +114,11 @@ export const recipes = [
         ],
         steps: [
             "Dans le bol de votre robot ou un grand saladier, mélangez la farine et l'eau à vitesse lente pour humidifier la farine (frasage).",
-            "Ajoutez le sel puis incorporez la levure émiettée (si vous utilisez de la levure sèche, délayez-la d'abord dans un peu d’eau tiède). Pétrissez environ 5 minutes jusqu’à obtenir une pâte homogène.",
+            "Ajoutez le sel puis incorporez la levure émiettée (si vous utilisez de la levure sèche, délayez-la d'abord dans un peu d’eau tiède).",
+            "Pétrissez environ 5 minutes jusqu’à obtenir une pâte homogène.",
             "Couvrez la pâte d’un torchon humide et laissez-la lever 20 minutes à température ambiante.",
-            "Sur un plan de travail fariné, étalez la pâte sans la déchirer, rabattez les bords au centre, remettez-la dans le bol et laissez lever encore 20 minutes. Répétez cette étape une troisième fois puis laissez lever 2h pour que la pâte double de volume.",
+            "Sur un plan de travail fariné, étalez la pâte sans la déchirer, rabattez les bords au centre, remettez-la dans le bol et laissez lever encore 20 minutes.",
+            "A nouveau étalez la pâte sans la déchirer, rabattez les bords au centre, puis laissez lever 2h pour que la pâte double de volume.",
             "Partagez la pâte en 6 pâtons égaux, formez des boules, puis laissez-les reposer 10 minutes sous un torchon.",
             "Façonnez chaque pâton en baguette allongée et laissez reposer 30 minutes pour l’apprêt.",
             "Préchauffez le four à 250 °C avec un petit récipient rempli d’eau pour créer de la vapeur.",

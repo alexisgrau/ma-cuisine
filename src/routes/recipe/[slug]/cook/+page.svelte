@@ -3,12 +3,12 @@
     import { recipes } from '$lib/recipes';
     import StepTimer from '$lib/components/StepTimer.svelte';
     import { base } from '$app/paths';
-
+    
     $: recipeId = $page.params.slug;
     $: recipe = recipes.find(r => r.id === recipeId);
-
+    
     let currentStep = 0;
-
+    
     function next() {
         if (currentStep < (recipe?.steps.length || 0)) currentStep++;
     }
@@ -19,48 +19,57 @@
 </script>
 
 {#if recipe}
-    <video src="data:video/mp4;base64,AAAAHGZ0eXBpc29tAAACAGlzb21pc28ybXA0MQAAAAhmcmVlAAAAAG1kYXQAAAAhaW9uY2UAAABhdmNjAAAAAABhdmNj" loop muted autoplay playsinline></video>
-    <div class="h-screen w-screen flex flex-col bg-stone-900 text-stone-100 overflow-hidden">
-        
-        <div class="h-16 flex items-center justify-between px-6 bg-stone-800 border-b border-stone-700">
-            <span class="text-lg font-semibold text-stone-400">{recipe.title}</span>
-            <div class="text-xl font-mono text-orange-400">
-                Étape {currentStep + 1} <span class="text-stone-500">/ {recipe.steps.length}</span>
+    <video src="{base}/test.mp4" loop muted autoplay playsinline></video>
+    
+    <div class="h-screen w-screen flex flex-col bg-neutral-900 text-white">
+        <div class="px-6 pt-6 pb-4">
+            <div class="flex items-center justify-between mb-3">
+                <span class="text-lg font-medium">{recipe.title}</span>
+                {#if currentStep + 1 > recipe.steps.length}
+                    <span class="text-sm text-neutral-400"></span>
+                {:else}
+                    <span class="text-sm text-neutral-400">Étape {currentStep + 1} sur {recipe.steps.length}</span>
+                {/if}
+                <button class="text-sm text-neutral-400 hover:text-white bg-[#313133] px-4 py-2 rounded-full">Quitter</button>
             </div>
-            <a href={`${base}/recipe/${recipe.id}`} class="text-sm bg-stone-700 px-3 py-1 rounded text-stone-300">Quitter</a>
+            
+            <div class="w-full h-1.5 bg-neutral-700 rounded-full overflow-hidden">
+                <div 
+                    class="h-full bg-green-500 transition-all duration-300 rounded-full"
+                    style="width: {((currentStep + 1) / recipe.steps.length) * 100}%">
+                </div>
+            </div>
         </div>
-
-        <div class="flex-1 flex flex-col items-center justify-center p-8 text-center relative">
+        <div class="flex-1 flex flex-col items-center justify-center px-8 text-center">
             {#if currentStep < recipe.steps.length}
-                <p class="text-3xl md:text-5xl font-medium leading-snug animate-fade-in">
+                <p class="text-4xl md:text-5xl font-bold leading-tight max-w-4xl animate-fade-in">
                     {recipe.steps[currentStep]}
                 </p>
                 
-                <div class="mt-8">
+                <div class="mt-10">
                     <StepTimer text={recipe.steps[currentStep]} />
                 </div>
-
             {:else}
                 <div class="text-center">
-                    <div class="text-6xl mb-4">🎉</div>
                     <h2 class="text-5xl font-bold text-green-400 mb-6">Bon Appétit !</h2>
-                    <a href={`${base}/`} class="inline-block bg-white text-stone-900 text-2xl font-bold py-4 px-10 rounded-full shadow-lg hover:bg-stone-200">
+                    <a href={`${base}/`} class="inline-block bg-white text-neutral-900 text-2xl font-bold py-4 px-10 rounded-full shadow-lg hover:bg-neutral-200">
                         Choisir une autre recette
                     </a>
                 </div>
             {/if}
         </div>
-
         {#if currentStep < recipe.steps.length}
-            <div class="h-24 md:h-32 flex border-t border-stone-700">
-                <button on:click={prev} disabled={currentStep === 0} 
-                    class="w-1/4 bg-stone-800 hover:bg-stone-700 text-stone-300 text-xl font-bold border-r border-stone-700 disabled:opacity-30">
-                    ← Précédent
+            <div class="flex gap-4 p-6">
+                <button 
+                    on:click={prev} 
+                    disabled={currentStep === 0} 
+                    class="flex-1 bg-neutral-800 hover:bg-neutral-700 text-white text-lg font-medium py-4 rounded-xl disabled:opacity-30 disabled:cursor-not-allowed flex items-center justify-center gap-2 transition-colors">
+                    <span>←</span> Précédent
                 </button>
-                
-                <button on:click={next} 
-                    class="w-3/4 bg-green-600 active:bg-green-700 text-white text-3xl md:text-4xl font-bold flex items-center justify-center gap-4">
-                    J'ai fini, SUIVANT →
+                <button 
+                    on:click={next} 
+                    class="flex-3 bg-green-600 hover:bg-green-700 text-white text-xl font-semibold py-4 rounded-xl flex items-center justify-center gap-2 transition-colors">
+                    J'ai fini, SUIVANT <span>→</span>
                 </button>
             </div>
         {/if}
@@ -68,18 +77,20 @@
 {/if}
 
 <style>
-    /* Petite animation fluide */
     .animate-fade-in {
         animation: fadeIn 0.3s ease-in;
     }
+    
     @keyframes fadeIn {
         from { opacity: 0; transform: translateY(10px); }
         to { opacity: 1; transform: translateY(0); }
     }
-    video{
+    /*
+    video {
         position: fixed;
         width: 1px;
         height: 1px;
         opacity: 0;
     }
+        */
 </style>

@@ -1,14 +1,12 @@
-<script>
+<script lang="ts">
     import { onDestroy } from 'svelte';
+    import { base } from '$app/paths';
     
     export let text = "";
     
     let duration = 0;
     let timeLeft = 0;
-    /**
-	 * @type {string | number | NodeJS.Timeout | undefined}
-	 */
-    let interval;
+    let interval:NodeJS.Timeout;
     let isRunning = false;
 
     onDestroy(() => {
@@ -36,7 +34,6 @@
             if (timeLeft <= 0) {
                 clearInterval(interval);
                 isRunning = false;
-                alert("Ding ! C'est fini !"); // Sonnerie simple
             }
         }, 1000);
     }
@@ -47,10 +44,7 @@
         timeLeft = 0;
     }
 
-    /**
-	 * @param {number} seconds
-	 */
-    function formatTime(seconds) {
+    function formatTime(seconds:number) {
         const m = Math.floor(seconds / 60);
         const s = seconds % 60;
         return `${m}:${s < 10 ? '0' : ''}${s}`;
@@ -58,17 +52,17 @@
 </script>
 
 {#if duration > 0}
-    <div class="mt-4 p-4 bg-orange-100 rounded-xl border border-orange-300 flex items-center justify-between">
-        <span class="text-orange-800 font-bold text-lg">
-            ⏱ Minuteur suggéré : {Math.floor(duration/60)} min
+    <div class="mt-4 px-4 py-2 bg-orange-100 rounded-xl flex items-center justify-between">
+        <span class="text-orange-800 font-bold text-lg flex items-center gap-2">
+            <img src="{base}/icons/clock.svg" alt="Timer" class="size-5"/> {Math.floor(duration/60)} min
         </span>
         
         {#if !isRunning && timeLeft === 0}
-            <button on:click={startTimer} class="bg-orange-500 text-white px-6 py-2 rounded-lg font-bold text-xl shadow active:scale-95 transition">
+            <button on:click={startTimer} class="bg-orange-500 text-white px-6 py-2 rounded-lg font-bold text-xl shadow active:scale-95 transition ml-4">
                 Lancer
             </button>
         {:else}
-            <div class="font-mono text-3xl font-bold text-orange-600">
+            <div class="font-mono text-3xl font-bold text-orange-600 ml-4">
                 {formatTime(timeLeft)}
             </div>
         {/if}

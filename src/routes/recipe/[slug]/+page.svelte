@@ -16,7 +16,7 @@
 {#if recipe}
     <div class="min-h-screen bg-stone-50 flex flex-col md:flex-row">
         <!-- Left side - Image with title overlay -->
-        <div class="md:w-1/2 relative min-h-400 md:min-h-screen">
+        <div class="md:w-2/5 relative min-h-400 md:min-h-screen">
             <img src={base+recipe.image} alt={recipe.title} class="w-full h-full object-cover" on:error={displayPlaceholder}/>
             
             <!-- Back button -->
@@ -33,7 +33,7 @@
         </div>
 
         <!-- Right side - Ingredients and info -->
-        <div class="md:w-1/2 p-8 md:p-12 overflow-y-auto bg-stone-50">
+        <div class="md:w-3/5 p-8 md:p-8 overflow-y-auto bg-stone-50">
             <!-- Info badges -->
             <div class="flex flex-wrap gap-3 mb-8">
                 <div class="flex items-center gap-2 bg-orange-200 px-4 py-2 rounded-full">
@@ -55,7 +55,7 @@
             </div>
 
             <!-- Ingredients section -->
-            <h2 class="text-4xl font-bold text-stone-900 mb-6">Ingrédients</h2>
+            <h2 class="text-3xl font-bold text-stone-900 mb-6">Ingrédients</h2>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
                 {#each recipe.ingredients as ing}
