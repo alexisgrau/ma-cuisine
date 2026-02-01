@@ -317,5 +317,36 @@ export const recipes = [
             "Enfourner à 240 °C et au bout de 5 minutes baisser la température à 200 °C, puis poursuivre la cuisson environ 10 minutes.",
             "Démouler les madeleines dès leur sortie du four."
         ]
+    },
+    {
+        "id": "brioche-r-frier",
+        "title": "Brioche Air Fryer",
+        "image": "/images/brioche-r-frier.jpg",
+        "description": "Une brioche dorée à faire au Air Fryer",
+        "prepTime": 15,
+        "cookTime": 90,
+        "difficulty": "Facile",
+        "budget": "Bas",
+        "categories": [
+            "Desserts",
+            "Pâtisserie"
+        ],
+        "ingredients": [
+            { "name": "Lait", "quantity": "230 ml" },
+            { "name": "Sachet de levure boulangère", "quantity": "1" },
+            { "name": "Sucre", "quantity": "70 g" },
+            { "name": "Huile", "quantity": "80 ml" },
+            { "name": "Farine", "quantity": "470 g" },
+            { "name": "Oeufs", "quantity": "1" }
+        ],
+        "steps": [
+            "Mettre 230 ml de lait tiède, 1 sachet de levure boulangère et 70g de sucre dans un saladier et remuer.",
+            "Pétrir 5 minutes pour avoir une boule.",
+            "Mettre dans le Air Fryer en mode prove à 32 degrés pendant 30 minutes pour que la pâte double de volume.",
+            "Faire 4 boules les étaler puis les rouler.",
+            "Mettre dans un moule les 4 roulés puis mettre au Air Fryer pendant 30 min à 34 degrés",
+            "Sortir les roulés et les badigeonner avec un jaune d'oeuf et du lait",
+            "Faire cuire pendant 35 min à 150 degrés puis 21 minutes avant la fin descendre à 120 degrés"
+        ]
     }
 ];
